@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
  // VINC WEBHOOK GASPAMOS IMIS DEDASHEVECI BIWOO MOGITYAN BOZI DEDA TU GASPAMAV
   // === MOBILE NAVIGATION ===
   const navToggle = document.getElementById('nav-toggle');
-  const nav = document.getElementById('nav');
+  const nav = document.querySelector('.nav-links');
   const navLinks = document.querySelectorAll('.nav-link');
 
   navToggle.addEventListener('click', () => {
