@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="./favicon.jpg">
+  <link rel="icon" type="image/png" href="./src/favicon.jpg">
 </head>
 <body>
   <header class="header" id="header">
@@ -98,72 +98,18 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
     </section>
 
     <!-- Tools Section -->
-    <section class="section tools" id="tools">
-      <div class="container">
-        <div class="section-header reveal">
-          <h2 class="section-title">Our Products</h2>
-          <p class="section-subtitle">Ready-to-use tools crafted with precision.</p>
-        </div>
-        <div class="tools-grid">
-          <article class="tool-card reveal">
-            <div class="tool-header">
-              <span class="tool-badge">Jailbreak</span>
-              <span class="tool-status">8GEL</span>
-            </div>
-            <h3>Kimi 2.6instant</h3>
-            <p>Full Jailbreak Makes Anything Except NSFW Content</p>
-            <ul class="tool-features">
-              <li>Discord Rats</li>
-              <li>Dos Scripts</li>
-              <li>Automated OSINT Tools</li>
-            </ul>
-            <a href="/discord" class="btn btn-tool">View Details</a>
-          </article>
-          <article class="tool-card reveal">
-            <div class="tool-header">
-              <span class="tool-badge">Python</span>
-              <span class="tool-status">5GEL</span>
-            </div>
-            <h3>Discord Bot</h3>
-            <p>We Will Make Discord Bot Based On How Costumer Describes It</p>
-            <ul class="tool-features">
-              <li>Configurable rules</li>
-              <li>Appeals system</li>
-              <li>Dashboard</li>
-            </ul>
-            <a href="/discord" class="btn btn-tool">View Details</a>
-          </article>
-          <article class="tool-card reveal">
-            <div class="tool-header">
-              <span class="tool-badge">Console JS</span>
-              <span class="tool-status">5GEL</span>
-            </div>
-            <h3>Omegle Ip Scanner</h3>
-            <p>Omegle IP Scanner Scans Ip Of The Person Ur Talking With Almost Instant ip - location info</p>
-            <ul class="tool-features">
-              <li>free api forever</li>
-              <li>location info</li>
-              <li>ip logs</li>
-            </ul>
-            <a href="/discord" class="btn btn-tool">View Details</a>
-          </article>
-          <article class="tool-card reveal">
-            <div class="tool-header">
-              <span class="tool-badge">Website</span>
-              <span class="tool-status">50-200GEL</span>
-            </div>
-            <h3>Frontend Site</h3>
-            <p>Fully Functional Frontend Site Best Quality Fast Delivery</p>
-            <ul class="tool-features">
-              <li>Frontend Website</li>
-              <li>Full code</li>
-              <li>Hosting Tutorial</li>
-            </ul>
-            <a href="/discord" class="btn btn-tool">View Details</a>
-          </article>
-        </div>
+  <section class="section tools" id="tools">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">Our Products</h2>
+        <p class="section-subtitle">Ready-to-use tools crafted with precision.</p>
       </div>
-    </section>
+
+      <!-- აქ ჩაიტვირთება JSON-ის მონაცემები -->
+      <div class="tools-grid"></div>
+
+    </div>
+  </section>
 
     <!-- Custom Request Section -->
     <section class="section request" id="request">
@@ -414,7 +360,6 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
       function navigate(path) {
         hideAll();
         if (!showSection(path)) {
-          // Fallback to home if route unknown
           showSection('/');
           history.replaceState(null, '', '/');
           return;
@@ -445,12 +390,10 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
         }
       });
 
-      // Initial load
       const currentPath = window.location.pathname;
       hideAll();
       if (currentPath in routes) {
         showSection(currentPath);
-        // Replace state to avoid extra history entry on reload
         history.replaceState(null, '', currentPath);
       } else {
         showSection('/');
@@ -458,5 +401,6 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
       }
     })();
   </script>
+  <script src="tools_card.js"></script>
 </body>
 </html>
