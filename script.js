@@ -471,3 +471,4 @@
   addRipple('.btn')
   addRipple('button[type="submit"]')
 })()
+

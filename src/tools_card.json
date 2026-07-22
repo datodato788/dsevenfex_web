@@ -1,0 +1,30 @@
+[
+  {
+    "badge": "Jailbreak",
+    "status": "8GEL",
+    "name": "Kimi 2.6instant",
+    "about": "Full Jailbreak Makes Anything Except NSFW Content",
+    "features": ["Discord Rats", "Dos Scripts", "Automated OSINT Tools"]
+  },
+  {
+    "badge": "Python",
+    "status": "5GEL",
+    "name": "Discord Bot",
+    "about": "We Will Make Discord Bot Based On How Costumer Describes It",
+    "features": ["Configurable rules", "Appeals system", "Dashboard"]
+  },
+  {
+    "badge": "Console JS",
+    "status": "5GEL",
+    "name": "Omegle Ip Scanner",
+    "about": "Omegle IP Scanner Scans Ip Of The Person Ur Talking With Almost Instant ip - location info",
+    "features": ["free api forever", "location info", "ip logs"]
+  },
+  {
+    "badge": "Website",
+    "status": "50-200GEL",
+    "name": "Frontend Site",
+    "about": "Fully Functional Frontend Site Best Quality Fast Delivery",
+    "features": ["Frontend Website", "Full code", "Hosting Tutorial"]
+  }
+]
