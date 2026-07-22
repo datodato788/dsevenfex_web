@@ -12,17 +12,17 @@
 <body>
   <header class="header" id="header">
     <div class="container nav-container">
-      <a href="#" class="logo" aria-label="DSevenFex home">
+      <a href="/" class="logo" aria-label="DSevenFex home">
         <span class="logo-text">DSevenFex</span>
         <span class="logo-dot"></span>
       </a>
       <nav class="nav" id="nav">
         <ul class="nav-links">
-          <li><a href="#services" class="nav-link">Services</a></li>
-          <li><a href="#tools" class="nav-link">Tools</a></li>
-          <li><a href="#request" class="nav-link">Request</a></li>
-          <li><a href="#community" class="nav-link">Community</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="/services" class="nav-link">Services</a></li>
+          <li><a href="/tools" class="nav-link">Tools</a></li>
+          <li><a href="/request" class="nav-link">Request</a></li>
+          <li><a href="/discord" class="nav-link">Community</a></li>
+          <li><a href="/about" class="nav-link">About</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
@@ -32,7 +32,7 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
+    <!-- Hero Section (Homepage) -->
     <section class="hero" id="hero">
       <canvas id="hero-canvas" aria-hidden="true"></canvas>
       <div class="hero-content container">
@@ -43,8 +43,8 @@
         <p class="hero-subtitle reveal">Digital Arsenal for the Curious Mind
 Explore custom scripts, tools, and utilities built for experimentation, learning, and digital creativity.</p>
         <div class="hero-actions reveal">
-          <a href="#tools" class="btn btn-primary">Explore Tools</a>
-          <a href="#community" class="btn btn-outline" target="_blank" rel="noopener">Join Discord</a>
+          <a href="/tools" class="btn btn-primary">Explore Tools</a>
+          <a href="/discord" class="btn btn-outline">Join Discord</a>
         </div>
       </div>
     </section>
@@ -116,7 +116,7 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
               <li>Dos Scripts</li>
               <li>Automated OSINT Tools</li>
             </ul>
-            <a href="#community" class="btn btn-tool">View Details</a>
+            <a href="/discord" class="btn btn-tool">View Details</a>
           </article>
           <article class="tool-card reveal">
             <div class="tool-header">
@@ -130,7 +130,7 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
               <li>Appeals system</li>
               <li>Dashboard</li>
             </ul>
-            <a href="#community" class="btn btn-tool">View Details</a>
+            <a href="/discord" class="btn btn-tool">View Details</a>
           </article>
           <article class="tool-card reveal">
             <div class="tool-header">
@@ -144,7 +144,7 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
               <li>location info</li>
               <li>ip logs</li>
             </ul>
-            <a href="#community" class="btn btn-tool">View Details</a>
+            <a href="/discord" class="btn btn-tool">View Details</a>
           </article>
           <article class="tool-card reveal">
             <div class="tool-header">
@@ -158,7 +158,7 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
               <li>Full code</li>
               <li>Hosting Tutorial</li>
             </ul>
-            <a href="#community" class="btn btn-tool">View Details</a>
+            <a href="/discord" class="btn btn-tool">View Details</a>
           </article>
         </div>
       </div>
@@ -236,7 +236,6 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
           <p class="section-subtitle">Two servers, one community. Choose your space.</p>
         </div>
         <div class="discord-cards">
-          <!-- Community Server Card with official Discord logo -->
           <div class="discord-card reveal">
             <div class="discord-card-bg"></div>
             <div class="discord-card-content">
@@ -253,7 +252,6 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
               <a href="https://discord.gg/AnTHEDCjcj" class="btn btn-discord" target="_blank" rel="noopener">Join Community</a>
             </div>
           </div>
-          <!-- Support Server Card with official Discord logo -->
           <div class="discord-card reveal">
             <div class="discord-card-bg"></div>
             <div class="discord-card-content">
@@ -274,83 +272,84 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
       </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section about" id="about">
-      <div class="container about-container">
-        <div class="about-text reveal">
-          <h2 class="section-title">About DSevenFex</h2>
-          <p>We are a two-developer studio focused on building robust software tools, automation, and custom solutions that make technology work for you.</p>
-          <p>Founded with the belief that quality software shouldn't be locked behind enterprise contracts, we deliver professional-grade scripts, bots, and utilities with a developer-first mindset—clear code, transparent pricing, and real support.</p>
-          <p>Every project we ship is crafted with the same care you'd expect from a top-tier engineering team: tested, documented, and ready to integrate into your workflow.</p>
-        </div>
-        <div class="about-visual reveal">
-          <div class="code-window">
-            <div class="code-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <pre><code><span class="code-keyword">def</span> <span class="code-func">dsevenfex_mission</span>():
+    <!-- About Page wrapper (About + Why Choose Us) -->
+    <div id="about-page">
+      <section class="section about" id="about">
+        <div class="container about-container">
+          <div class="about-text reveal">
+            <h2 class="section-title">About DSevenFex</h2>
+            <p>We are a two-developer studio focused on building robust software tools, automation, and custom solutions that make technology work for you.</p>
+            <p>Founded with the belief that quality software shouldn't be locked behind enterprise contracts, we deliver professional-grade scripts, bots, and utilities with a developer-first mindset—clear code, transparent pricing, and real support.</p>
+            <p>Every project we ship is crafted with the same care you'd expect from a top-tier engineering team: tested, documented, and ready to integrate into your workflow.</p>
+          </div>
+          <div class="about-visual reveal">
+            <div class="code-window">
+              <div class="code-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <pre><code><span class="code-keyword">def</span> <span class="code-func">dsevenfex_mission</span>():
     <span class="code-string">"""Build tools that matter."""</span>
     <span class="code-keyword">while</span> <span class="code-bool">True</span>:
         <span class="code-func">listen_to_users</span>()
         <span class="code-func">craft_solutions</span>()
         <span class="code-func">deliver_excellence</span>()</code></pre>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Why Choose Us Section -->
-    <section class="section why-us">
-      <div class="container">
-        <div class="section-header reveal">
-          <h2 class="section-title">Why Choose DSevenFex</h2>
-          <p class="section-subtitle">We focus on what really matters for your project.</p>
+      <section class="section why-us">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2 class="section-title">Why Choose DSevenFex</h2>
+            <p class="section-subtitle">We focus on what really matters for your project.</p>
+          </div>
+          <div class="why-grid">
+            <div class="why-item reveal">
+              <div class="why-icon">⚡</div>
+              <h4>Custom Solutions</h4>
+              <p>No cookie-cutter code. Every script and tool is built around your exact requirements.</p>
+            </div>
+            <div class="why-item reveal">
+              <div class="why-icon">💬</div>
+              <h4>Fast Communication</h4>
+              <p>We work directly with you via Discord, ensuring clarity and quick turnaround.</p>
+            </div>
+            <div class="why-item reveal">
+              <div class="why-icon">🛡️</div>
+              <h4>Quality Code</h4>
+              <p>Clean, maintainable, and documented. We write software that future developers will thank us for.</p>
+            </div>
+            <div class="why-item reveal">
+              <div class="why-icon">💡</div>
+              <h4>Developer-First</h4>
+              <p>Built by developers for developers. We understand what makes a great tool.</p>
+            </div>
+            <div class="why-item reveal">
+              <div class="why-icon">💰</div>
+              <h4>Affordable Pricing</h4>
+              <p>Professional quality without the agency price tag. Starting from just 5 GEL.</p>
+            </div>
+          </div>
         </div>
-        <div class="why-grid">
-          <div class="why-item reveal">
-            <div class="why-icon">⚡</div>
-            <h4>Custom Solutions</h4>
-            <p>No cookie-cutter code. Every script and tool is built around your exact requirements.</p>
-          </div>
-          <div class="why-item reveal">
-            <div class="why-icon">💬</div>
-            <h4>Fast Communication</h4>
-            <p>We work directly with you via Discord, ensuring clarity and quick turnaround.</p>
-          </div>
-          <div class="why-item reveal">
-            <div class="why-icon">🛡️</div>
-            <h4>Quality Code</h4>
-            <p>Clean, maintainable, and documented. We write software that future developers will thank us for.</p>
-          </div>
-          <div class="why-item reveal">
-            <div class="why-icon">💡</div>
-            <h4>Developer-First</h4>
-            <p>Built by developers for developers. We understand what makes a great tool.</p>
-          </div>
-          <div class="why-item reveal">
-            <div class="why-icon">💰</div>
-            <h4>Affordable Pricing</h4>
-            <p>Professional quality without the agency price tag. Starting from just 5 GEL.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <footer class="footer">
     <div class="container footer-container">
       <div class="footer-brand">
-        <a href="#" class="logo">DSevenFex</a>
+        <a href="/" class="logo">DSevenFex</a>
         <p>Custom software & automation studio.</p>
       </div>
       <div class="footer-links">
         <div class="footer-col">
           <h5>Navigation</h5>
           <ul>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#tools">Tools</a></li>
-            <li><a href="#request">Request</a></li>
-            <li><a href="#community">Community</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/tools">Tools</a></li>
+            <li><a href="/request">Request</a></li>
+            <li><a href="/discord">Community</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -374,11 +373,89 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
     </div>
   </footer>
 
-  <!-- Back to top button -->
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
   <script src="script.js"></script>
+  <script>
+    (function() {
+      // Map paths to section / wrapper IDs
+      const routes = {
+        '/': 'hero',
+        '/services': 'services',
+        '/tools': 'tools',
+        '/request': 'request',
+        '/discord': 'community',
+        '/about': 'about-page'
+      };
+
+      const sections = {};
+      for (const [path, id] of Object.entries(routes)) {
+        sections[path] = document.getElementById(id);
+      }
+
+      function hideAll() {
+        Object.values(sections).forEach(el => {
+          if (el) el.style.display = 'none';
+        });
+      }
+
+      function showSection(path) {
+        const section = sections[path];
+        if (section) {
+          section.style.display = ''; // reset to default (block/flex)
+          return true;
+        }
+        return false;
+      }
+
+      function navigate(path) {
+        hideAll();
+        if (!showSection(path)) {
+          // Fallback to home if route unknown
+          showSection('/');
+          history.replaceState(null, '', '/');
+          return;
+        }
+        history.pushState(null, '', path);
+      }
+
+      // Intercept clicks on internal links
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link) return;
+        // Only handle same-origin navigation links
+        if (link.host !== window.location.host) return;
+        const path = link.pathname;
+        if (path in routes) {
+          e.preventDefault();
+          navigate(path);
+        }
+      });
+
+      // Handle browser back/forward
+      window.addEventListener('popstate', () => {
+        const path = window.location.pathname;
+        hideAll();
+        if (!showSection(path)) {
+          showSection('/');
+          history.replaceState(null, '', '/');
+        }
+      });
+
+      // Initial load
+      const currentPath = window.location.pathname;
+      hideAll();
+      if (currentPath in routes) {
+        showSection(currentPath);
+        // Replace state to avoid extra history entry on reload
+        history.replaceState(null, '', currentPath);
+      } else {
+        showSection('/');
+        history.replaceState(null, '', '/');
+      }
+    })();
+  </script>
 </body>
 </html>
