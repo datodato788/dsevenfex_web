@@ -1,3 +1,4 @@
+<!-- ========== index.html ========== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,22 +9,22 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="./src/favicon.jpg">
+  <link rel="icon" type="image/png" href="./favicon.jpg">
 </head>
 <body>
   <header class="header" id="header">
     <div class="container nav-container">
-      <a href="/" class="logo" aria-label="DSevenFex home">
+      <a href="index.html" class="logo" aria-label="DSevenFex home">
         <span class="logo-text">DSevenFex</span>
         <span class="logo-dot"></span>
       </a>
       <nav class="nav" id="nav">
         <ul class="nav-links">
-          <li><a href="/services" class="nav-link">Services</a></li>
-          <li><a href="/tools" class="nav-link">Tools</a></li>
-          <li><a href="/request" class="nav-link">Request</a></li>
-          <li><a href="/discord" class="nav-link">Community</a></li>
-          <li><a href="/about" class="nav-link">About</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="request.html" class="nav-link">Request</a></li>
+          <li><a href="discord.html" class="nav-link">Community</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
         </ul>
       </nav>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
@@ -33,7 +34,7 @@
   </header>
 
   <main>
-    <!-- Hero Section (Homepage) -->
+    <!-- Hero Section -->
     <section class="hero" id="hero">
       <canvas id="hero-canvas" aria-hidden="true"></canvas>
       <div class="hero-content container">
@@ -41,17 +42,16 @@
           Custom Software,<br>
           <span class="hero-accent">Automation</span> & Developer Tools
         </h1>
-        <p class="hero-subtitle reveal">Digital Arsenal for the Curious Mind
-Explore custom scripts, tools, and utilities built for experimentation, learning, and digital creativity.</p>
+        <p class="hero-subtitle reveal">Digital Arsenal for the Curious Mind — explore custom scripts, tools, and utilities built for experimentation, learning, and digital creativity.</p>
         <div class="hero-actions reveal">
-          <a href="/tools" class="btn btn-primary">Explore Tools</a>
-          <a href="/discord" class="btn btn-outline">Join Discord</a>
+          <a href="tools.html" class="btn btn-primary">Explore Tools</a>
+          <a href="discord.html" class="btn btn-outline">Join Discord</a>
         </div>
       </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="section services" id="services">
+    <!-- Service teaser grid (brief) -->
+    <section class="section services" id="services-overview">
       <div class="container">
         <div class="section-header reveal">
           <h2 class="section-title">What We Build</h2>
@@ -77,7 +77,7 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
               <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
             </div>
             <h3>Kimi 2.6 instant jailbreak</h3>
-            <p>Fully Jailbreaks kimi 2.6 to make anything</p>
+            <p>Fully jailbreaks Kimi 2.6 to make anything</p>
           </article>
           <article class="service-card reveal">
             <div class="service-icon">
@@ -86,217 +86,28 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
             <h3>Developer Tools</h3>
             <p>CLI utilities, code generators, testing helpers, and productivity enhancers for developers.</p>
           </article>
-          <article class="service-card reveal">
-            <div class="service-icon">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3" ry="3"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
-            </div>
-            <h3>Custom Software Requests</h3>
-            <p>Have a unique idea? We build bespoke applications, dashboards, and utilities from scratch.</p>
-          </article>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <a href="services.html" class="btn btn-outline">All Services</a>
         </div>
       </div>
     </section>
-
-    <!-- Tools Section -->
-  <section class="section tools" id="tools">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2 class="section-title">Our Products</h2>
-        <p class="section-subtitle">Ready-to-use tools crafted with precision.</p>
-      </div>
-
-      <!-- აქ ჩაიტვირთება JSON-ის მონაცემები -->
-      <div class="tools-grid"></div>
-
-    </div>
-  </section>
-
-    <!-- Custom Request Section -->
-    <section class="section request" id="request">
-      <div class="container request-container">
-        <div class="request-info reveal">
-          <h2 class="section-title">Custom Script Request</h2>
-          <p class="section-subtitle">Tell us what you need. We'll build it.</p>
-          <div class="request-benefits">
-            <div class="benefit-item">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Personalized approach</span>
-            </div>
-            <div class="benefit-item">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Clear communication</span>
-            </div>
-            <div class="benefit-item">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>Fast delivery</span>
-            </div>
-          </div>
-        </div>
-        <div class="request-form-wrapper reveal">
-          <form id="request-form" class="request-form" novalidate>
-            <div class="form-group">
-              <label for="discord">Discord Username</label>
-              <input type="text" id="discord" name="discord" placeholder="username#0000" required>
-              <span class="form-error">Please enter your Discord username</span>
-            </div>
-            <div class="form-group">
-              <label for="description">Request Description</label>
-              <textarea id="description" name="description" rows="4" placeholder="Describe what you need in detail..." required></textarea>
-              <span class="form-error">Please describe your request</span>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="language">Programming Language</label>
-                <select id="language" name="language" required>
-                  <option value="" disabled selected>Select language</option>
-                  <option value="Python">Python</option>
-                  <option value="JavaScript">JavaScript</option>
-                  <option value="TypeScript">TypeScript</option>
-                  <option value="Other">Other</option>
-                </select>
-                <span class="form-error">Please select a language</span>
-              </div>
-              <div class="form-group">
-                <label for="budget">Budget (GEL)</label>
-                <input type="number" id="budget" name="budget" placeholder="Min. 5" min="5" required>
-                <span class="form-error">Minimum budget is 5 GEL</span>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-full">Send Request</button>
-          </form>
-          <div id="form-success" class="form-success" hidden>
-            <div class="success-icon">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-            </div>
-            <h3>Request Sent Successfully</h3>
-            <p>We'll reach out via Discord soon.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Discord Community Section -->
-    <section class="section community" id="community">
-      <div class="container">
-        <div class="section-header reveal">
-          <h2 class="section-title">Join Our Discord</h2>
-          <p class="section-subtitle">Two servers, one community. Choose your space.</p>
-        </div>
-        <div class="discord-cards">
-          <div class="discord-card reveal">
-            <div class="discord-card-bg"></div>
-            <div class="discord-card-content">
-              <div class="discord-logo">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18.93 5.05C17.65 4.45 16.29 4.04 14.88 3.84C14.83 3.84 14.79 3.86 14.76 3.9C14.59 4.19 14.4 4.57 14.26 4.88C12.72 4.65 11.17 4.65 9.63 4.88C9.49 4.57 9.3 4.19 9.12 3.9C9.09 3.86 9.05 3.84 9 3.84C7.59 4.04 6.23 4.45 4.95 5.05C4.92 5.06 4.89 5.08 4.87 5.11C3.02 7.95 2.54 10.69 2.78 13.37C2.79 13.42 2.81 13.46 2.84 13.5C4.55 14.75 6.24 15.5 7.88 15.93C7.93 15.94 7.99 15.93 8.03 15.89C8.37 15.44 8.68 14.96 8.94 14.45C8.98 14.38 8.95 14.3 8.88 14.27C8.41 14.09 7.97 13.87 7.55 13.62C7.48 13.58 7.47 13.48 7.52 13.42C7.6 13.36 7.69 13.3 7.77 13.24C7.82 13.2 7.88 13.2 7.93 13.23C9.5 14.02 11.19 14.42 12.91 14.42C14.63 14.42 16.32 14.02 17.9 13.23C17.95 13.2 18.01 13.2 18.06 13.24C18.14 13.3 18.23 13.36 18.31 13.42C18.36 13.48 18.35 13.58 18.28 13.62C17.86 13.87 17.42 14.09 16.95 14.27C16.88 14.3 16.85 14.38 16.89 14.45C17.15 14.96 17.46 15.44 17.8 15.89C17.84 15.93 17.9 15.94 17.95 15.93C19.59 15.5 21.28 14.75 22.99 13.5C23.02 13.46 23.04 13.42 23.05 13.37C23.35 10.29 22.52 7.58 20.96 5.11C20.94 5.08 20.91 5.06 20.88 5.05H20.93Z" fill="white"/>
-                </svg>
-              </div>
-              <h3>🌹LarpsGeorgia💻</h3>
-              <p>General discussions, updates, early access to tools, and developer chats.</p>
-              <div class="discord-stats">
-                <span class="member-count">30+ Members</span>
-              </div>
-              <a href="https://discord.gg/AnTHEDCjcj" class="btn btn-discord" target="_blank" rel="noopener">Join Community</a>
-            </div>
-          </div>
-          <div class="discord-card reveal">
-            <div class="discord-card-bg"></div>
-            <div class="discord-card-content">
-              <div class="discord-logo">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18.93 5.05C17.65 4.45 16.29 4.04 14.88 3.84C14.83 3.84 14.79 3.86 14.76 3.9C14.59 4.19 14.4 4.57 14.26 4.88C12.72 4.65 11.17 4.65 9.63 4.88C9.49 4.57 9.3 4.19 9.12 3.9C9.09 3.86 9.05 3.84 9 3.84C7.59 4.04 6.23 4.45 4.95 5.05C4.92 5.06 4.89 5.08 4.87 5.11C3.02 7.95 2.54 10.69 2.78 13.37C2.79 13.42 2.81 13.46 2.84 13.5C4.55 14.75 6.24 15.5 7.88 15.93C7.93 15.94 7.99 15.93 8.03 15.89C8.37 15.44 8.68 14.96 8.94 14.45C8.98 14.38 8.95 14.3 8.88 14.27C8.41 14.09 7.97 13.87 7.55 13.62C7.48 13.58 7.47 13.48 7.52 13.42C7.6 13.36 7.69 13.3 7.77 13.24C7.82 13.2 7.88 13.2 7.93 13.23C9.5 14.02 11.19 14.42 12.91 14.42C14.63 14.42 16.32 14.02 17.9 13.23C17.95 13.2 18.01 13.2 18.06 13.24C18.14 13.3 18.23 13.36 18.31 13.42C18.36 13.48 18.35 13.58 18.28 13.62C17.86 13.87 17.42 14.09 16.95 14.27C16.88 14.3 16.85 14.38 16.89 14.45C17.15 14.96 17.46 15.44 17.8 15.89C17.84 15.93 17.9 15.94 17.95 15.93C19.59 15.5 21.28 14.75 22.99 13.5C23.02 13.46 23.04 13.42 23.05 13.37C23.35 10.29 22.52 7.58 20.96 5.11C20.94 5.08 20.91 5.06 20.88 5.05H20.93Z" fill="white"/>
-                </svg>
-              </div>
-              <h3>HW Hackers Georgia</h3>
-              <p>Dedicated support for custom requests, project communication, and one-on-one help.</p>
-              <div class="discord-stats">
-                <span class="member-count">50+ members</span>
-              </div>
-              <a href="https://discord.gg/YvV6n6vDaw" class="btn btn-discord" target="_blank" rel="noopener">Join Support</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- About Page wrapper (About + Why Choose Us) -->
-    <div id="about-page">
-      <section class="section about" id="about">
-        <div class="container about-container">
-          <div class="about-text reveal">
-            <h2 class="section-title">About DSevenFex</h2>
-            <p>We are a two-developer studio focused on building robust software tools, automation, and custom solutions that make technology work for you.</p>
-            <p>Founded with the belief that quality software shouldn't be locked behind enterprise contracts, we deliver professional-grade scripts, bots, and utilities with a developer-first mindset—clear code, transparent pricing, and real support.</p>
-            <p>Every project we ship is crafted with the same care you'd expect from a top-tier engineering team: tested, documented, and ready to integrate into your workflow.</p>
-          </div>
-          <div class="about-visual reveal">
-            <div class="code-window">
-              <div class="code-dots">
-                <span></span><span></span><span></span>
-              </div>
-              <pre><code><span class="code-keyword">def</span> <span class="code-func">dsevenfex_mission</span>():
-    <span class="code-string">"""Build tools that matter."""</span>
-    <span class="code-keyword">while</span> <span class="code-bool">True</span>:
-        <span class="code-func">listen_to_users</span>()
-        <span class="code-func">craft_solutions</span>()
-        <span class="code-func">deliver_excellence</span>()</code></pre>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section why-us">
-        <div class="container">
-          <div class="section-header reveal">
-            <h2 class="section-title">Why Choose DSevenFex</h2>
-            <p class="section-subtitle">We focus on what really matters for your project.</p>
-          </div>
-          <div class="why-grid">
-            <div class="why-item reveal">
-              <div class="why-icon">⚡</div>
-              <h4>Custom Solutions</h4>
-              <p>No cookie-cutter code. Every script and tool is built around your exact requirements.</p>
-            </div>
-            <div class="why-item reveal">
-              <div class="why-icon">💬</div>
-              <h4>Fast Communication</h4>
-              <p>We work directly with you via Discord, ensuring clarity and quick turnaround.</p>
-            </div>
-            <div class="why-item reveal">
-              <div class="why-icon">🛡️</div>
-              <h4>Quality Code</h4>
-              <p>Clean, maintainable, and documented. We write software that future developers will thank us for.</p>
-            </div>
-            <div class="why-item reveal">
-              <div class="why-icon">💡</div>
-              <h4>Developer-First</h4>
-              <p>Built by developers for developers. We understand what makes a great tool.</p>
-            </div>
-            <div class="why-item reveal">
-              <div class="why-icon">💰</div>
-              <h4>Affordable Pricing</h4>
-              <p>Professional quality without the agency price tag. Starting from just 5 GEL.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
   </main>
 
   <footer class="footer">
     <div class="container footer-container">
       <div class="footer-brand">
-        <a href="/" class="logo">DSevenFex</a>
+        <a href="index.html" class="logo">DSevenFex</a>
         <p>Custom software & automation studio.</p>
       </div>
       <div class="footer-links">
         <div class="footer-col">
           <h5>Navigation</h5>
           <ul>
-            <li><a href="/services">Services</a></li>
-            <li><a href="/tools">Tools</a></li>
-            <li><a href="/request">Request</a></li>
-            <li><a href="/discord">Community</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="request.html">Request</a></li>
+            <li><a href="discord.html">Community</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -325,82 +136,5 @@ Explore custom scripts, tools, and utilities built for experimentation, learning
   </button>
 
   <script src="script.js"></script>
-  <script>
-    (function() {
-      // Map paths to section / wrapper IDs
-      const routes = {
-        '/': 'hero',
-        '/services': 'services',
-        '/tools': 'tools',
-        '/request': 'request',
-        '/discord': 'community',
-        '/about': 'about-page'
-      };
-
-      const sections = {};
-      for (const [path, id] of Object.entries(routes)) {
-        sections[path] = document.getElementById(id);
-      }
-
-      function hideAll() {
-        Object.values(sections).forEach(el => {
-          if (el) el.style.display = 'none';
-        });
-      }
-
-      function showSection(path) {
-        const section = sections[path];
-        if (section) {
-          section.style.display = ''; // reset to default (block/flex)
-          return true;
-        }
-        return false;
-      }
-
-      function navigate(path) {
-        hideAll();
-        if (!showSection(path)) {
-          showSection('/');
-          history.replaceState(null, '', '/');
-          return;
-        }
-        history.pushState(null, '', path);
-      }
-
-      // Intercept clicks on internal links
-      document.addEventListener('click', (e) => {
-        const link = e.target.closest('a');
-        if (!link) return;
-        // Only handle same-origin navigation links
-        if (link.host !== window.location.host) return;
-        const path = link.pathname;
-        if (path in routes) {
-          e.preventDefault();
-          navigate(path);
-        }
-      });
-
-      // Handle browser back/forward
-      window.addEventListener('popstate', () => {
-        const path = window.location.pathname;
-        hideAll();
-        if (!showSection(path)) {
-          showSection('/');
-          history.replaceState(null, '', '/');
-        }
-      });
-
-      const currentPath = window.location.pathname;
-      hideAll();
-      if (currentPath in routes) {
-        showSection(currentPath);
-        history.replaceState(null, '', currentPath);
-      } else {
-        showSection('/');
-        history.replaceState(null, '', '/');
-      }
-    })();
-  </script>
-  <script src="tools_card.js"></script>
 </body>
 </html>
