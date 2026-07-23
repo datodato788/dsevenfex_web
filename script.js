@@ -1,7 +1,6 @@
 ;(() => {
   /* ============================================================
-     FexOsint — Premium Interactive Frontend Script
-     v3 — Integrated Three.js Flowing Wave Shader
+     Premium Interactive Script — Enhanced Three.js + Smooth UX
      ============================================================ */
   'use strict'
 
@@ -21,9 +20,7 @@
 
   /* ---------- UTILITIES ---------- */
   const throttle = (fn, delay) => {
-    let last = 0
-    let pendingArgs = null
-    let timer = null
+    let last = 0, pendingArgs = null, timer = null
     return (...args) => {
       const now = Date.now()
       const remaining = delay - (now - last)
@@ -42,16 +39,15 @@
   }
 
   const lerp = (a, b, t) => a + (b - a) * t
-  const clamp = (v, min, max) => Math.min(max, Math.max(min, v))
   const rand = (min, max) => min + Math.random() * (max - min)
 
   /* ---------- HEADER SCROLL STATE ---------- */
   if (header) {
-    const onScrollHeader = throttle(() => {
+    const updateHeader = throttle(() => {
       header.classList.toggle('scrolled', window.scrollY > 20)
     }, 100)
-    window.addEventListener('scroll', onScrollHeader, { passive: true })
-    onScrollHeader()
+    window.addEventListener('scroll', updateHeader, { passive: true })
+    updateHeader()
   }
 
   /* ---------- MOBILE NAVIGATION ---------- */
@@ -88,27 +84,27 @@
 
   /* ---------- BACK TO TOP ---------- */
   if (backToTop) {
-    const onScrollTop = throttle(() => {
+    const toggleBackToTop = throttle(() => {
       backToTop.classList.toggle('visible', window.scrollY > 600)
     }, 100)
-    window.addEventListener('scroll', onScrollTop, { passive: true })
+    window.addEventListener('scroll', toggleBackToTop, { passive: true })
     backToTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' })
     })
   }
 
-  /* ---------- SCROLL REVEAL (with stagger) ---------- */
+  /* ---------- SCROLL REVEAL (with smooth stagger) ---------- */
   const revealElements = document.querySelectorAll('.reveal')
   if (revealElements.length) {
-    const groups = new Map()
+    const groupMap = new Map()
     revealElements.forEach(el => {
       const parent = el.parentElement
-      if (!groups.has(parent)) groups.set(parent, [])
-      groups.get(parent).push(el)
+      if (!groupMap.has(parent)) groupMap.set(parent, [])
+      groupMap.get(parent).push(el)
     })
-    groups.forEach(siblings => {
+    groupMap.forEach(siblings => {
       siblings.forEach((el, i) => {
-        el.style.transitionDelay = prefersReducedMotion ? '0ms' : `${Math.min(i * 80, 400)}ms`
+        el.style.transitionDelay = prefersReducedMotion ? '0ms' : `${Math.min(i * 70, 350)}ms`
       })
     })
 
@@ -135,9 +131,7 @@
         const res = await fetch('https://api.ipify.org?format=json')
         const data = await res.json()
         return data.ip
-      } catch {
-        return null
-      }
+      } catch { return null }
     }
 
     const checkCooldown = ip => {
@@ -158,7 +152,7 @@
     const sendToWebhook = async (data, ip) => {
       const embed = {
         title: '🛠️ New Custom Script Request',
-        color: 0x3b82f6,
+        color: 0x6366f1,
         fields: [
           { name: 'Discord', value: data.discord, inline: true },
           { name: 'Language', value: data.language, inline: true },
@@ -166,7 +160,7 @@
           { name: 'Description', value: data.description || 'No description provided' },
           { name: 'IP Address', value: ip || 'Not available', inline: false }
         ],
-        footer: { text: 'FexOsint Request Form' },
+        footer: { text: 'DSevenFex Request Form' },
         timestamp: new Date().toISOString()
       }
       const res = await fetch(DISCORD_WEBHOOK_URL, {
@@ -237,14 +231,15 @@
     })
   }
 
-  /* ---------- HERO INTERACTIVE BACKGROUND (THREE.JS SHADER) ---------- */
+  /* ---------- THREE.JS HERO BACKGROUND (Enhanced Wave Shader) ---------- */
   if (canvas && heroSection && !prefersReducedMotion && typeof THREE !== 'undefined') {
     let renderer
     try {
-      renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true })
+      renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true })
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    } catch (err) {
-      console.error('WebGL not supported', err)
+    } catch (e) {
+      console.warn('WebGL not supported')
+      canvas.style.display = 'none'
       return
     }
 
@@ -252,7 +247,38 @@
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1)
     const clock = new THREE.Clock()
 
-    // Shaders
+    // Enhanced fragment shader with mouse interaction
+    const fragmentShader = `
+      precision highp float;
+      uniform vec2 iResolution;
+      uniform float iTime;
+      uniform vec2 iMouse;
+      varying vec2 vTextureCoord;
+
+      void main() {
+        vec2 uv = vTextureCoord;
+        vec2 p = (2.0 * gl_FragCoord.xy - iResolution.xy) / min(iResolution.x, iResolution.y);
+
+        // Mouse influence (soft distortion)
+        float mx = iMouse.x > 0.0 ? (iMouse.x / iResolution.x - 0.5) * 2.0 : 0.0;
+        float my = iMouse.y > 0.0 ? (iMouse.y / iResolution.y - 0.5) * 2.0 : 0.0;
+
+        for(float i = 1.0; i < 12.0; i++) {
+          p.x += 0.7 / i * cos(i * 2.5 * p.y + iTime * 0.3 + i) + mx * 0.05;
+          p.y += 0.7 / i * cos(i * 1.8 * p.x + iTime * 0.2 + i) + my * 0.05;
+        }
+
+        vec3 indigo = vec3(0.39, 0.40, 0.95);
+        vec3 cyan   = vec3(0.15, 0.83, 0.94);
+        float blend = abs(sin(iTime * 0.2 + p.x * 0.5)) * abs(cos(iTime * 0.15 + p.y * 0.5));
+        vec3 color = mix(indigo, cyan, blend);
+        
+        // Dynamic alpha based on wave intensity
+        float alpha = 0.4 + 0.2 * abs(sin(p.x * 3.0 + iTime)) * abs(cos(p.y * 2.5 + iTime));
+        gl_FragColor = vec4(color * alpha, alpha * 0.8);
+      }
+    `
+
     const vertexShader = `
       varying vec2 vTextureCoord;
       void main() {
@@ -261,49 +287,18 @@
       }
     `
 
-    // Premium Indigo/Cyan themed flowing wave shader
-    const fragmentShader = `
-      precision mediump float;
-      uniform vec2 iResolution;
-      uniform float iTime;
-      uniform vec2 iMouse;
-      varying vec2 vTextureCoord;
-
-      void mainImage(out vec4 fragColor, in vec2 fragCoord) {
-        vec2 uv = (2.0 * fragCoord - iResolution.xy) / min(iResolution.x, iResolution.y);
-
-        for(float i = 1.0; i < 10.0; i++){
-          uv.x += 0.6 / i * cos(i * 2.5 * uv.y + iTime);
-          uv.y += 0.6 / i * cos(i * 1.5 * uv.x + iTime);
-        }
-        
-        // Match CSS variables: Indigo (#6366f1) and Cyan (#22d3ee)
-        vec3 colorA = vec3(0.38, 0.40, 0.94); 
-        vec3 colorB = vec3(0.13, 0.82, 0.93); 
-        vec3 finalColor = mix(colorA, colorB, abs(sin(iTime * 0.2 + uv.x)));
-        
-        fragColor = vec4(finalColor / abs(sin(iTime - uv.y - uv.x)), 1.0);
-      }
-
-      void main() {
-        vec4 color;
-        mainImage(color, vTextureCoord * iResolution);
-        gl_FragColor = color;
-      }
-    `
-
     const uniforms = {
       iTime: { value: 0 },
       iResolution: { value: new THREE.Vector2() },
-      iMouse: { value: new THREE.Vector2() }
+      iMouse: { value: new THREE.Vector2(-1000, -1000) }
     }
 
-    const material = new THREE.ShaderMaterial({ vertexShader, fragmentShader, uniforms })
+    const material = new THREE.ShaderMaterial({ vertexShader, fragmentShader, uniforms, transparent: true })
     const geometry = new THREE.PlaneGeometry(2, 2)
     const mesh = new THREE.Mesh(geometry, material)
     scene.add(mesh)
 
-    const onResize = () => {
+    const resizeCanvas = () => {
       const rect = canvas.getBoundingClientRect()
       const w = rect.width
       const h = rect.height
@@ -321,7 +316,7 @@
       rafId = requestAnimationFrame(animate)
     }
 
-    // Performance optimization: pause when scrolled out of view
+    // Pause when hero not visible
     const visibilityObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         running = entry.isIntersecting
@@ -331,7 +326,7 @@
           rafId = null
         }
       })
-    }, { threshold: 0 })
+    }, { threshold: 0.01 })
     visibilityObserver.observe(heroSection)
 
     document.addEventListener('visibilitychange', () => {
@@ -343,60 +338,75 @@
       }
     })
 
+    // Mouse tracking for shader (throttled)
+    const updateMouse = throttle(e => {
+      const rect = canvas.getBoundingClientRect()
+      uniforms.iMouse.value.set(e.clientX - rect.left, e.clientY - rect.top)
+    }, 30)
+    canvas.addEventListener('mousemove', updateMouse)
+    canvas.addEventListener('mouseleave', () => uniforms.iMouse.value.set(-1000, -1000))
+
     let resizeTimer
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer)
-      resizeTimer = setTimeout(onResize, 150)
+      resizeTimer = setTimeout(resizeCanvas, 150)
     })
 
-    onResize()
+    resizeCanvas()
     rafId = requestAnimationFrame(animate)
   }
 
-  /* ---------- HERO PARALLAX ON MOUSE MOVE ---------- */
+  /* ---------- HERO PARALLAX (Mouse + Scroll) ---------- */
   if (heroContent && heroSection && !prefersReducedMotion) {
-    const parallaxStrength = 14
-    let rafId = null
     let targetX = 0, targetY = 0
     let currentX = 0, currentY = 0
+    let rafId = null
 
-    const animate = () => {
-      currentX = lerp(currentX, targetX, 0.12)
-      currentY = lerp(currentY, targetY, 0.12)
+    const animateParallax = () => {
+      currentX = lerp(currentX, targetX, 0.1)
+      currentY = lerp(currentY, targetY, 0.1)
       heroContent.style.transform = `translate(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px)`
-      if (Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05) {
-        rafId = requestAnimationFrame(animate)
+      if (Math.abs(targetX - currentX) > 0.02 || Math.abs(targetY - currentY) > 0.02) {
+        rafId = requestAnimationFrame(animateParallax)
       } else {
         rafId = null
       }
     }
 
-    heroSection.addEventListener('mousemove', throttle(e => {
+    const updateMouse = throttle(e => {
       const rect = heroSection.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
-      targetX = ((x / rect.width) - 0.5) * parallaxStrength
-      targetY = ((y / rect.height) - 0.5) * parallaxStrength
-      if (!rafId) rafId = requestAnimationFrame(animate)
-    }, 16))
+      targetX = ((e.clientX - rect.left) / rect.width - 0.5) * 18
+      targetY = ((e.clientY - rect.top) / rect.height - 0.5) * 10
+      if (!rafId) rafId = requestAnimationFrame(animateParallax)
+    }, 16)
 
+    const updateScroll = throttle(() => {
+      const scrollY = window.scrollY
+      const heroHeight = heroSection.offsetHeight
+      const scrolled = Math.min(scrollY / heroHeight, 1)
+      targetY = scrolled * 20
+      if (!rafId) rafId = requestAnimationFrame(animateParallax)
+    }, 16)
+
+    heroSection.addEventListener('mousemove', updateMouse)
     heroSection.addEventListener('mouseleave', () => {
       targetX = 0
       targetY = 0
-      if (!rafId) rafId = requestAnimationFrame(animate)
+      if (!rafId) rafId = requestAnimationFrame(animateParallax)
     })
+    window.addEventListener('scroll', updateScroll, { passive: true })
+    updateScroll()
   }
 
-  /* ---------- CARD TILT + GLOW ON HOVER ---------- */
-  const addTiltEffect = selector => {
+  /* ---------- CARD TILT + DYNAMIC GLOW ---------- */
+  const addCardEffect = selector => {
     document.querySelectorAll(selector).forEach(card => {
       card.style.transformStyle = 'preserve-3d'
-      card.style.willChange = 'transform'
+      card.style.willChange = 'transform, box-shadow'
       let rafId = null
 
       card.addEventListener('mousemove', e => {
         if (rafId) cancelAnimationFrame(rafId)
-
         rafId = requestAnimationFrame(() => {
           const rect = card.getBoundingClientRect()
           const x = e.clientX - rect.left
@@ -404,26 +414,26 @@
           const centerX = rect.width / 2
           const centerY = rect.height / 2
 
-          const rotateY = ((x - centerX) / centerX) * 6
-          const rotateX = -((y - centerY) / centerY) * 6
-          const shadowX = (x - centerX) / 15
-          const shadowY = (y - centerY) / 15
+          const rotateY = ((x - centerX) / centerX) * 5
+          const rotateX = -((y - centerY) / centerY) * 5
+          const shadowX = (x - centerX) / 12
+          const shadowY = (y - centerY) / 12
 
-          card.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`
-          card.style.boxShadow = `${shadowX}px ${shadowY}px 25px rgba(0,0,0,0.2), 0 0 0 1px rgba(59,130,246,0.15)`
+          card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(0)`
+          card.style.boxShadow = `${shadowX}px ${shadowY}px 30px rgba(0,0,0,0.3), 0 0 0 1px rgba(99,102,241,0.2)`
 
           const glow = card.querySelector('.card-glow')
           if (glow) {
-            glow.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(59,130,246,0.15), transparent 60%)`
+            glow.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(99,102,241,0.2), transparent 60%)`
           }
         })
       })
 
       card.addEventListener('mouseleave', () => {
         if (rafId) cancelAnimationFrame(rafId)
-        card.style.transform = 'perspective(700px) rotateX(0deg) rotateY(0deg)'
+        card.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateZ(0)'
         card.style.boxShadow = ''
-        card.style.transition = 'transform 0.5s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.5s ease'
+        card.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1), box-shadow 0.6s ease'
         const glow = card.querySelector('.card-glow')
         if (glow) glow.style.background = ''
       })
@@ -434,20 +444,23 @@
     })
   }
 
-  addTiltEffect('.service-card')
-  addTiltEffect('.tool-card')
-  addTiltEffect('.discord-card')
-  addTiltEffect('.why-item')
+  addCardEffect('.service-card')
+  addCardEffect('.tool-card')
+  addCardEffect('.discord-card')
+  addCardEffect('.why-item')
 
-  /* ---------- CLICK RIPPLE ON INTERACTIVE ELEMENTS ---------- */
+  /* ---------- CLICK RIPPLE ---------- */
   const addRipple = selector => {
     document.querySelectorAll(selector).forEach(el => {
-      el.style.position = el.style.position || 'relative'
-      el.style.overflow = 'hidden'
+      if (el.dataset.rippleBound) return
+      el.dataset.rippleBound = true
+      const isBtn = el.classList.contains('btn')
+      el.style.position = isBtn ? undefined : 'relative'
+      el.style.overflow = isBtn ? undefined : 'hidden'
       el.addEventListener('click', function (e) {
         const rect = this.getBoundingClientRect()
-        const ripple = document.createElement('span')
         const size = Math.max(rect.width, rect.height) * 2
+        const ripple = document.createElement('span')
         ripple.style.position = 'absolute'
         ripple.style.left = `${e.clientX - rect.left - size / 2}px`
         ripple.style.top = `${e.clientY - rect.top - size / 2}px`
@@ -471,4 +484,3 @@
   addRipple('.btn')
   addRipple('button[type="submit"]')
 })()
-
