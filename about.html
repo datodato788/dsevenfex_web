@@ -1,0 +1,141 @@
+<!-- ========== about.html ========== -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | DSevenFex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="./favicon.jpg">
+</head>
+<body>
+  <header class="header" id="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" aria-label="DSevenFex home">
+        <span class="logo-text">DSevenFex</span>
+        <span class="logo-dot"></span>
+      </a>
+      <nav class="nav" id="nav">
+        <ul class="nav-links">
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="tools.html" class="nav-link">Tools</a></li>
+          <li><a href="request.html" class="nav-link">Request</a></li>
+          <li><a href="discord.html" class="nav-link">Community</a></li>
+          <li><a href="about.html" class="nav-link active">About</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section about" id="about">
+      <div class="container about-container">
+        <div class="about-text reveal">
+          <h2 class="section-title">About DSevenFex</h2>
+          <p>We are a two-developer studio focused on building robust software tools, automation, and custom solutions that make technology work for you.</p>
+          <p>Founded with the belief that quality software shouldn't be locked behind enterprise contracts, we deliver professional-grade scripts, bots, and utilities with a developer-first mindset—clear code, transparent pricing, and real support.</p>
+          <p>Every project we ship is crafted with the same care you'd expect from a top-tier engineering team: tested, documented, and ready to integrate into your workflow.</p>
+        </div>
+        <div class="about-visual reveal">
+          <div class="code-window">
+            <div class="code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <pre><code><span class="code-keyword">def</span> <span class="code-func">dsevenfex_mission</span>():
+    <span class="code-string">"""Build tools that matter."""</span>
+    <span class="code-keyword">while</span> <span class="code-bool">True</span>:
+        <span class="code-func">listen_to_users</span>()
+        <span class="code-func">craft_solutions</span>()
+        <span class="code-func">deliver_excellence</span>()</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why-us">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Why Choose DSevenFex</h2>
+          <p class="section-subtitle">We focus on what really matters for your project.</p>
+        </div>
+        <div class="why-grid">
+          <div class="why-item reveal">
+            <div class="why-icon">⚡</div>
+            <h4>Custom Solutions</h4>
+            <p>No cookie-cutter code. Every script and tool is built around your exact requirements.</p>
+          </div>
+          <div class="why-item reveal">
+            <div class="why-icon">💬</div>
+            <h4>Fast Communication</h4>
+            <p>We work directly with you via Discord, ensuring clarity and quick turnaround.</p>
+          </div>
+          <div class="why-item reveal">
+            <div class="why-icon">🛡️</div>
+            <h4>Quality Code</h4>
+            <p>Clean, maintainable, and documented. We write software that future developers will thank us for.</p>
+          </div>
+          <div class="why-item reveal">
+            <div class="why-icon">💡</div>
+            <h4>Developer-First</h4>
+            <p>Built by developers for developers. We understand what makes a great tool.</p>
+          </div>
+          <div class="why-item reveal">
+            <div class="why-icon">💰</div>
+            <h4>Affordable Pricing</h4>
+            <p>Professional quality without the agency price tag. Starting from just 5 GEL.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">DSevenFex</a>
+        <p>Custom software & automation studio.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="tools.html">Tools</a></li>
+            <li><a href="request.html">Request</a></li>
+            <li><a href="discord.html">Community</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Discord</h5>
+          <ul>
+            <li><a href="#">Community Server</a></li>
+            <li><a href="#">Support Server</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <ul>
+            <li><a href="https://github.com/mrandrovarme">GitHub-Andro</a></li>
+            <li><a href="https://github.com/datodato788">Github-Dato</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 DSevenFex. Built with precision.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
